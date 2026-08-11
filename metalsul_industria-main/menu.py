@@ -1,4 +1,7 @@
 from repositories.funcionario_repository import FuncionarioRepository
+from datetime import date
+from models.funcionario import Funcionario
+from repositories.funcionario_repository import FuncionarioRepository
 
 
 class Menu:
@@ -44,6 +47,49 @@ class Menu:
                 break
             else:
                 print("Opção inválida")
+
+    def cadastrar_funcionario(self): 
+
+        print()
+        print("=" * 60)
+        print("CADASTRO DE FUNCIONÁRIO")
+        print("=" * 60)
+        nome = input("Nome: ")
+        cpf = input("CPF: ")
+        rg = input("RG: ")
+        sexo = input("Sexo (M/F): ").upper()
+        estado_civil = input("Estado Civil: ")
+        email = input("E-mail: ")
+        telefone = input("Telefone: ")
+        celular = input("Celular: ")
+        cargo = input("Cargo: ")
+        departamento = input("Departamento: ")
+        salario = float(input("Salário: "))
+        turno = input("Turno: ")
+
+        funcionario = Funcionario(
+            nome=nome,
+            cpf=cpf,
+            rg=rg,
+            data_nascimento=None,
+            sexo=sexo,
+            estado_civil=estado_civil,
+            email=email,
+            telefone=telefone,
+            celular=celular,
+            cargo=cargo,
+            departamento=departamento,
+            salario=salario,
+            data_admissao=date.today(),
+            data_demissao=None,
+            turno=turno,
+            status="ATIVO",
+            observacoes=""
+        )
+
+        self.repository.salvar(funcionario)
+        print()
+        input("Pressione ENTER para continuar...")
 
     def buscar_funcionario(self):
         pass
