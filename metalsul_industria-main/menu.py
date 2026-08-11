@@ -92,13 +92,61 @@ class Menu:
         input("Pressione ENTER para continuar...")
 
     def buscar_funcionario(self):
-        pass
+
+        print()
+        print("=" * 60)
+        print("BUSCAR FUNCIONÁRIO")
+        print("=" * 60)
+
+        try:
+
+            id_funcionario = int(
+                input("Código do funcionário: ")
+            )
+
+        except ValueError:
+            print()
+            print("\nCódigo inválido.")
+            input("\nPressione ENTER para continuar...")
+            return
+
+        funcionario = self.repository.buscar_por_id
+        (
+            id_funcionario
+        )
+        print()
+
+        if funcionario is None:
+            print("Funcionário não encontrado.")
+
+        else:
+            print(f"Código..........: {funcionario.id_funcionario}")
+            print(f"Nome............: {funcionario.nome}")
+            print(f"CPF.............: {funcionario.cpf}")
+            print(f"RG..............: {funcionario.rg}")
+            print(f"Nascimento......: {funcionario.data_nascimento}")
+            print(f"Sexo............: {funcionario.sexo}")
+            print(f"Estado Civil....: {funcionario.estado_civil}")
+            print(f"E-mail..........: {funcionario.email}")
+            print(f"Telefone........: {funcionario.telefone}")
+            print(f"Celular.........: {funcionario.celular}")
+            print(f"Cargo...........: {funcionario.cargo}")
+            print(f"Departamento....: {funcionario.departamento}")
+            print(f"Salário.........: R$ {funcionario.salario:.2f}")
+            print(f"Admissão........: {funcionario.data_admissao}")
+            print(f"Demissão........: {funcionario.data_demissao}")
+            print(f"Turno...........: {funcionario.turno}")
+            print(f"Status..........: {funcionario.status}")
+            print(f"Observações.....: {funcionario.observacoes}")
+        print()
+
+        input("Pressione ENTER para continuar...")
 
     def listar_funcionario(self):
-            pass
+        pass
 
     def atualizar_funcionario(self):
-            pass
+        pass
     
     def excluir_funcionario(self):
-            pass
+        pass
