@@ -293,4 +293,55 @@ class Menu:
         input("Pressione ENTER para continuar...")
     
     def excluir_funcionario(self):
-        pass
+
+        print()
+        print("=" * 60)
+        print("EXCLUSÃO DE FUNCIONÁRIO")
+        print("=" * 60)
+
+        try:
+            id_funcionario = int(
+                input("Código do funcionário: ")
+            )
+
+        except ValueError:
+
+            print()
+            print("Código inválido.")
+            input("\nPressione ENTER para continuar...")
+            return
+
+        funcionario = self.repository.buscar_por_id(
+            id_funcionario
+        )
+
+        if funcionario is None:
+
+            print()
+            print("Funcionário não encontrado.")
+            input("\nPressione ENTER para continuar...")
+            return
+
+        print()
+        print("Funcionário localizado")
+        print("-" * 60)
+        print(f"Código.......: {funcionario.id_funcionario}")
+        print(f"Nome.........: {funcionario.nome}")
+        print(f"Cargo........: {funcionario.cargo}")
+        print(f"Departamento.: {funcionario.departamento}")
+        print()
+
+        resposta = input(
+            "Deseja realmente excluir este funcionário? (S/N): "
+        ).strip().upper()
+
+        if resposta != "S":
+
+            print()
+            print("Operação cancelada.")
+            input("\nPressione ENTER para continuar...")
+            return
+
+        self.repository.excluir(id_funcionario)
+        print()
+        input("Pressione ENTER para continuar...")
