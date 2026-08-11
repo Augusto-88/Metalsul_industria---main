@@ -131,7 +131,7 @@ class FuncionarioRepository:
                 funcionarios = []
 
                 for registro in registros:
-                    funcionarios.appende(self.criar_funcionario(registro))
+                    funcionarios.append(self.criar_funcionario(registro))
 
                 
 
